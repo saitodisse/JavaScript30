@@ -2,7 +2,7 @@
   --flex-direction: row;
   --justify-content: flex-start;
   --align-items: center;
-  --flex-grow: 0;
+  --flex-grow-rest: 0;
   --flex-grow-first: 0;
 }
 
@@ -60,7 +60,7 @@ h1, h2 {
   border: 8px solid #5e5ebf;
   margin: 5px;
   font-size: large;
-  flex-grow: var(--flex-grow);
+  flex-grow: var(--flex-grow-rest);
 }
 
 .item-first {
@@ -102,7 +102,7 @@ h1, h2 {
     border: 5px solid #5e5ebf;
     margin: 4px;
     font-size: large;
-    flex-grow: var(--flex-grow);
+    flex-grow: var(--flex-grow-rest);
   }
 
   .item-first {
