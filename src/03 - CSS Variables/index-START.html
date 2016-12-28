@@ -5,22 +5,47 @@
   <title>Scoped CSS Variables and JS</title>
 </head>
 <body>
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <h2>Update CSS Variables with <span class='highlight'>JS</span></h2>
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input type="range"
+           id="spacing" min="10" max="200" value="10"
+           data-css-property="--spacing"
+           data-sizing="px">
 
     <label for="blur">Blur:</label>
-    <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    <input type="range"
+           id="blur"
+           data-css-property="--blur"
+           data-sizing="px"
+           min="0" max="25" value="10" >
 
-    <label for="base">Base Color</label>
-    <input type="color" name="base" value="#ffc600">
+    <label for="color">Color</label>
+    <input type="color"
+           data-css-property="--color"
+           id="color" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img class="my-image" src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+
+    :root {
+      --color: yellow;
+      --blur: 1px;
+      --spacing: 10px;
+    }
+
+    .my-image {
+      padding: var(--spacing);
+      background-color: var(--color);
+      filter: blur(var(--blur));
+    }
+
+    .highlight {
+      color: var(--color);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -28,9 +53,6 @@
 
     body {
       text-align: center;
-    }
-
-    body {
       background: #193549;
       color: white;
       font-family: 'helvetica neue', sans-serif;
@@ -53,6 +75,18 @@
   </style>
 
   <script>
+    let elements = document.querySelectorAll('input')
+    console.log(`--nodeList--`); console.log(elements) // DEBUG
+    
+    function _handleUpdate () {
+      const suffix = this.dataset.sizing || ''
+      document.documentElement.style.setProperty(this.dataset.cssProperty, this.value + suffix)
+    }
+    
+    elements.forEach(ele => {
+//      ele.addEventListener('change', _handleUpdate)
+      ele.addEventListener('input', _handleUpdate)
+    })
   </script>
 
 </body>
