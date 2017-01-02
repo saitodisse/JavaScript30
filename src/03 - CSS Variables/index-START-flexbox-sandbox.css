@@ -2,7 +2,6 @@
   --flex-direction: row;
   --justify-content: flex-start;
   --align-items: center;
-  --flex-grow-rest: 0;
   --flex-grow-item-1: 0;
   --flex-grow-item-2: 0;
   --flex-grow-item-3: 0;
@@ -89,6 +88,8 @@ h1, h2 {
 }
 
 .item {
+  display: flex;
+  flex-direction: column;
   padding: 5px 14px;
   border: 8px solid #5e5ebf;
   margin: 5px;
@@ -97,7 +98,8 @@ h1, h2 {
 
 .item p {
   margin: 0 0 0 0;
-  font-size: 13px;
+  font-size: 14px;
+  flex-shrink: 1;
 }
 
 .item-1 {
@@ -150,10 +152,5 @@ h1, h2 {
     border: 5px solid #5e5ebf;
     margin: 4px;
     font-size: large;
-    flex-grow: var(--flex-grow-rest);
-  }
-
-  .item-first {
-    flex-grow: var(--flex-grow-first);
   }
 }
