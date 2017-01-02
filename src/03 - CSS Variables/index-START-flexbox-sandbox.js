@@ -11,15 +11,29 @@ elements.forEach(ele => {
 let items = document.querySelectorAll('.item')
 function _handleClick (ev) {
   ev.preventDefault();
-  const currentFlexGrow = Number(document.documentElement.style.getPropertyValue(`--flex-grow-${this.id}`)) || 0
-  let newFlexGrowValue = currentFlexGrow
-  if (ev.button === 0 && newFlexGrowValue > 0) {
-    newFlexGrowValue--;  
-  } else  if (ev.button === 2) {
-    newFlexGrowValue++;
+
+  if (!ev.shiftKey) {
+    const currentFlexGrow = Number(document.documentElement.style.getPropertyValue(`--flex-grow-${this.id}`)) || 0
+    let newFlexGrowValue = currentFlexGrow
+    if (ev.button === 0 && newFlexGrowValue > 0) {
+      newFlexGrowValue--;  
+    } else  if (ev.button === 2) {
+      newFlexGrowValue++;
+    }
+    document.documentElement.style.setProperty(`--flex-grow-${this.id}`, newFlexGrowValue)
+    this.querySelector('p.flexGrow').textContent = `flex-grow: ${newFlexGrowValue}`
+  } else {
+    const currentFlexShrink = Number(document.documentElement.style.getPropertyValue(`--flex-shrink-${this.id}`)) || 0
+    let newFlexShrinkValue = currentFlexShrink
+    if (ev.button === 0 && newFlexShrinkValue > 0) {
+      newFlexShrinkValue--;  
+    } else  if (ev.button === 2) {
+      newFlexShrinkValue++;
+    }
+    document.documentElement.style.setProperty(`--flex-shrink-${this.id}`, newFlexShrinkValue)
+    this.querySelector('p.flexShrink').textContent = `flex-shrink: ${newFlexShrinkValue}`
   }
-  document.documentElement.style.setProperty(`--flex-grow-${this.id}`, newFlexGrowValue)
-  this.querySelector('p').textContent = `flex-grow: ${newFlexGrowValue}`
+
 }
 
 items.forEach(ele => {
@@ -27,7 +41,7 @@ items.forEach(ele => {
   ele.addEventListener('contextmenu', _handleClick)
 })
 
-document.querySelector('#flex-grow-reset-0').addEventListener('click', () => {
+document.querySelector('#flex-grow-reset-default').addEventListener('click', () => {
   // clear css variables
   document.documentElement.style.removeProperty('--flex-grow-item-1')
   document.documentElement.style.removeProperty('--flex-grow-item-2')
@@ -36,7 +50,7 @@ document.querySelector('#flex-grow-reset-0').addEventListener('click', () => {
   document.documentElement.style.removeProperty('--flex-grow-item-5')
 
   // reset flex-grow texts
-  document.querySelectorAll('.item p').forEach((p) => {
+  document.querySelectorAll('.item p.flexGrow').forEach((p) => {
     p.textContent = 'flex-grow: 0'
   })
 })
@@ -57,8 +71,42 @@ document.querySelector('#flex-grow-reset-1').addEventListener('click', () => {
   document.documentElement.style.setProperty('--flex-grow-item-5', 1)
 
   // reset flex-grow texts
-  document.querySelectorAll('.item p').forEach((p) => {
+  document.querySelectorAll('.item p.flexGrow').forEach((p) => {
     p.textContent = 'flex-grow: 1'
   })
 })
 
+document.querySelector('#flex-shrink-reset-default').addEventListener('click', () => {
+  // clear css variables
+  document.documentElement.style.removeProperty('--flex-shrink-item-1')
+  document.documentElement.style.removeProperty('--flex-shrink-item-2')
+  document.documentElement.style.removeProperty('--flex-shrink-item-3')
+  document.documentElement.style.removeProperty('--flex-shrink-item-4')
+  document.documentElement.style.removeProperty('--flex-shrink-item-5')
+
+  // reset flex-shrink texts
+  document.querySelectorAll('.item p.flexShrink').forEach((p) => {
+    p.textContent = 'flex-shrink: 1'
+  })
+})
+
+document.querySelector('#flex-shrink-reset-0').addEventListener('click', () => {
+  // clear css variables
+  document.documentElement.style.removeProperty('--flex-shrink-item-1')
+  document.documentElement.style.removeProperty('--flex-shrink-item-2')
+  document.documentElement.style.removeProperty('--flex-shrink-item-3')
+  document.documentElement.style.removeProperty('--flex-shrink-item-4')
+  document.documentElement.style.removeProperty('--flex-shrink-item-5')
+
+  // set all flex-shrink to 1
+  document.documentElement.style.setProperty('--flex-shrink-item-1', 0)
+  document.documentElement.style.setProperty('--flex-shrink-item-2', 0)
+  document.documentElement.style.setProperty('--flex-shrink-item-3', 0)
+  document.documentElement.style.setProperty('--flex-shrink-item-4', 0)
+  document.documentElement.style.setProperty('--flex-shrink-item-5', 0)
+
+  // reset flex-shrink texts
+  document.querySelectorAll('.item p.flexShrink').forEach((p) => {
+    p.textContent = 'flex-shrink: 0'
+  })
+})
