@@ -191,80 +191,63 @@
   </div>
 
   <div class="radio-variable">
-    <div class="radio-list-title">
-      flex-grow-first
-    </div>
-
-    <div class="radio-list-items">
-
-      <div class="radio-item">
-        <input
-            type="radio"
-            name="flex-grow-first"
-            value="0"
-            checked
-            id="flex-grow-first-0"/>
-        <label for="flex-grow-first-0">
-          0
-        </label>
-      </div>
-      <div class="radio-item">
-        <input
-            type="radio"
-            name="flex-grow-first"
-            value="1"
-            id="flex-grow-first-1"/>
-        <label for="flex-grow-first-1">
-          1
-        </label>
+    <div class="radio-list-title-container">
+      flex-grow
+      <div 
+        class="info"
+        title="Click on items to increase or decrease flex-grow;
+- right click: increase
+- left click: decrease">
+        ?
       </div>
     </div>
-
-  </div>
-
-  <div class="radio-variable">
-    <div class="radio-list-title">
-      flex-grow-rest
-    </div>
-
-    <div class="radio-list-items">
-
-      <div class="radio-item">
-        <input
-            type="radio"
-            name="flex-grow-rest"
-            value="0"
-            checked
-            id="flex-grow-rest-0"/>
-        <label for="flex-grow-rest-0">
-          0
-        </label>
-      </div>
-      <div class="radio-item">
-        <input
-            type="radio"
-            name="flex-grow-rest"
-            value="1"
-            id="flex-grow-rest-1"/>
-        <label for="flex-grow-rest-1">
-          1
-        </label>
-      </div>
-
-
-    </div>
-
-
+      <button
+        class="button-control"
+        id="flex-grow-reset-0"
+      > 
+        reset all to 0
+      </button>
+      <button
+        class="button-control"
+        id="flex-grow-reset-1"
+      > 
+        reset all to 1
+      </button>
   </div>
 
 </div>
 
 <div class="main-container">
-  <div class="item item-first">1</div>
-  <div class="item">2</div>
-  <div class="item">3</div>
-  <div class="item">4</div>
-  <div class="item">5</div>
+  <div 
+    id="item-1"
+    class="item item-1">
+    1
+    <p>flex-grow: 0</p>
+  </div>
+  <div 
+    id="item-2"
+    class="item item-2">
+    2
+    <p>flex-grow: 0</p>
+  </div>
+  <div 
+    id="item-3"
+    class="item item-3">
+    3
+    <p>flex-grow: 0</p>
+  </div>
+  <div 
+    id="item-4"
+    class="item item-4">
+    4
+    <p>flex-grow: 0</p>
+  </div>
+  <div 
+    id="item-5"
+    class="item item-5">
+    5
+    <p>flex-grow: 0</p>
+  </div>
 </div>
 
 <script src="./index-START-flexbox-sandbox.js"></script>
