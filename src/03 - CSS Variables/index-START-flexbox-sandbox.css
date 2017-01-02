@@ -2,11 +2,13 @@
   --flex-direction: row;
   --justify-content: flex-start;
   --align-items: center;
+
   --flex-grow-item-1: 0;
   --flex-grow-item-2: 0;
   --flex-grow-item-3: 0;
   --flex-grow-item-4: 0;
-  --flex-grow-item-5: 0;  
+  --flex-grow-item-5: 0;
+
   --flex-shrink-item-1: 1;
   --flex-shrink-item-2: 1;
   --flex-shrink-item-3: 1;
@@ -103,27 +105,27 @@ h1, h2 {
 }
 
 .item-1 {
-  font-size: 140%;
+  font-size: 100%;
   flex-grow: var(--flex-grow-item-1);
   flex-shrink: var(--flex-shrink-item-1);
 }
 .item-2 {
-  font-size: 110%;
+  font-size: 120%;
   flex-grow: var(--flex-grow-item-2);
   flex-shrink: var(--flex-shrink-item-2);
 }
 .item-3 {
-  font-size: 120%;
+  font-size: 140%;
   flex-grow: var(--flex-grow-item-3);
   flex-shrink: var(--flex-shrink-item-3);
 }
 .item-4 {
-  font-size:130%;
+  font-size:160%;
   flex-grow: var(--flex-grow-item-4);
   flex-shrink: var(--flex-shrink-item-4);
 }
 .item-5 {
-  font-size: 150%;
+  font-size: 180%;
   flex-grow: var(--flex-grow-item-5);
   flex-shrink: var(--flex-shrink-item-5);
 }
