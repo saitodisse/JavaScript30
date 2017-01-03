@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let canvas
-  let ctx
 
-  canvas = document.querySelector('#draw')
-  ctx = canvas.getContext('2d')
-
-  // _setCanvasSize()
-  // _registerEvents()
+  _setCanvasSize()
+  _registerEvents()
   _initializeContext()
 
   function _registerEvents () {
@@ -16,32 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function _setCanvasSize () {
-    let width = window.innerWidth - 2
-    let height = window.innerHeight
-    canvas.width = width
-    canvas.height = height - 6
+    const canvas = document.querySelector('#draw')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
   }
 
-  let isDrawing = false
   let lastX = 0
   let lastY = 0
 
   function _initializeContext () {
+    const canvas = document.querySelector('#draw')
+    const ctx = canvas.getContext('2d')
     ctx.strokeStyle = '#BADASS'
     ctx.lineCap = 'round'
     ctx.lineJoin = 'round'
 
-    document.querySelector('#draw').addEventListener('mousemove', (ev) => {
-      console.log(ev)
-    })
-    // canvas.addEventListener('mousedown', () => { isDrawing = true })
-    // canvas.addEventListener('mouseup', () => { isDrawing = false })
-    // canvas.addEventListener('mouseout', () => { console.log(`--hello--`) })
+    let isDrawing = false
+
+    canvas.addEventListener('mousemove', (ev) => _draw(ev, isDrawing))
+    canvas.addEventListener('mousedown', () => { isDrawing = true })
+    canvas.addEventListener('mouseup', () => { isDrawing = false })
+    canvas.addEventListener('mouseout', () => { isDrawing = false })
   }
 
-  function _draw (ev) {
+  function _draw (ev, isDrawing) {
     if (isDrawing) {
-      console.log(`--ev--`); console.log(ev) // DEBUG
+      console.log(`--ev--`);
+      console.log(ev) // DEBUG
     }
   }
 })
