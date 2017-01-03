@@ -7,33 +7,29 @@ elements.forEach(ele => {
   ele.addEventListener('change', _handleUpdate)
 })
 
-
 let items = document.querySelectorAll('.item')
 function _handleClick (ev) {
-  ev.preventDefault();
+  ev.preventDefault()
 
   if (!ev.shiftKey) {
-    const currentFlexGrow = Number(document.documentElement.style.getPropertyValue(`--flex-grow-${this.id}`)) || 0
-    let newFlexGrowValue = currentFlexGrow
+    let newFlexGrowValue = Number(document.documentElement.style.getPropertyValue(`--flex-grow-${this.id}`)) || 0
     if (ev.button === 0 && newFlexGrowValue > 0) {
-      newFlexGrowValue--;  
-    } else  if (ev.button === 2) {
-      newFlexGrowValue++;
+      newFlexGrowValue--
+    } else if (ev.button === 2) {
+      newFlexGrowValue++
     }
     document.documentElement.style.setProperty(`--flex-grow-${this.id}`, newFlexGrowValue)
     this.querySelector('p.flexGrow').textContent = `flex-grow: ${newFlexGrowValue}`
   } else {
-    const currentFlexShrink = Number(document.documentElement.style.getPropertyValue(`--flex-shrink-${this.id}`)) || 0
-    let newFlexShrinkValue = currentFlexShrink
+    let newFlexShrinkValue = Number(document.documentElement.style.getPropertyValue(`--flex-shrink-${this.id}`)) || 0
     if (ev.button === 0 && newFlexShrinkValue > 0) {
-      newFlexShrinkValue--;  
-    } else  if (ev.button === 2) {
-      newFlexShrinkValue++;
+      newFlexShrinkValue--
+    } else if (ev.button === 2) {
+      newFlexShrinkValue++
     }
     document.documentElement.style.setProperty(`--flex-shrink-${this.id}`, newFlexShrinkValue)
     this.querySelector('p.flexShrink').textContent = `flex-shrink: ${newFlexShrinkValue}`
   }
-
 }
 
 items.forEach(ele => {
