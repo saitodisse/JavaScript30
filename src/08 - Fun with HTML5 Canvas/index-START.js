@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d')
 
   let isDrawing = false
-  let currentColor = '#000'
+  let currentColors = []
+  let strokeIndex = 0
   let lastX = 0
   let lastY = 0
   let lineWidth = 1
@@ -72,29 +73,30 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousedown', (ev) => {
       ev.preventDefault()
       isDrawing = true
-      currentColor = '#222'
+      currentColors = ['#000', '#222', '#444', '#666']
       _saveLastPosition(ev)
     })
 
     canvas.addEventListener('contextmenu', (ev) => {
       ev.preventDefault()
       isDrawing = true
-      currentColor = '#1d41d6'
+      currentColors = ['#001867', '#1d41d6']
       _saveLastPosition(ev)
     })
   }
 
-  function _drawLine(ev) {
+  function _drawLine (ev) {
     if (isDrawing) {
-      ctx.strokeStyle = currentColor
+      ctx.strokeStyle = currentColors[strokeIndex % currentColors.length]
       ctx.lineCap = 'round'
       ctx.lineJoin = 'round'
-      ctx.lineWidth = lineWidth
+      ctx.lineWidth = Math.floor(Math.random() * 2) + lineWidth
       ctx.beginPath()
       ctx.moveTo(lastX, lastY)
       ctx.lineTo(ev.offsetX, ev.offsetY)
       ctx.stroke()
-      ctx.strokeStyle.bold()
+
+      strokeIndex++
     }
   }
 
